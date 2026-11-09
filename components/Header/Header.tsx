@@ -42,8 +42,8 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-          <AuthNavigation />
         </nav>
+          <AuthNavigation />
       </div>
     </header>
   );
