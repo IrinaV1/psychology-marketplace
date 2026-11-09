@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import css from "./Header.module.css";
 import { usePathname } from "next/navigation";
-import AuthNavigation from "./AuthNavigation/AuthNavigation";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 export default function Header() {
   const pathname = usePathname();
   return (
     <header className={css.header}>
       <div className={`${css.headerContainer} container`}>
+
         <Link className={css.logo} href="/" aria-label="Home">
           <Image
             src="/logo.svg"
@@ -43,6 +44,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+        
           <AuthNavigation />
       </div>
     </header>

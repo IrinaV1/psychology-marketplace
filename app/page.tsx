@@ -4,10 +4,10 @@ import css from "./Home.module.css";
 
 export default function Home() {
   return (
-    <div className={css.page}>
+
       <main className={css.main}>
         <Header />
       </main>
-    </div>
+   
   );
 }
