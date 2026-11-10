@@ -1,16 +1,15 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import css from "./Header.module.css";
-import { usePathname } from "next/navigation";
-import AuthNavigation from "../AuthNavigation/AuthNavigation";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import css from './Header.module.css';
+import { usePathname } from 'next/navigation';
+import AuthNavigation from '../AuthNavigation/AuthNavigation';
 
 export default function Header() {
   const pathname = usePathname();
   return (
     <header className={css.header}>
       <div className={`${css.headerContainer} container`}>
-
         <Link className={css.logo} href="/" aria-label="Home">
           <Image
             src="/logo.svg"
@@ -24,19 +23,19 @@ export default function Header() {
           <ul className={css.list}>
             <li className={css.item}>
               <Link
-                href={"/"}
-                className={pathname === "/" ? css.active : ""}
-                aria-current={pathname === "/" ? "page" : undefined}
+                href={'/'}
+                className={pathname === '/' ? css.active : ''}
+                aria-current={pathname === '/' ? 'page' : undefined}
               >
                 Home
               </Link>
             </li>
             <li className={css.item}>
               <Link
-                href={"/catalog"}
-                className={pathname.startsWith("/catalog") ? css.active : ""}
+                href={'/catalog'}
+                className={pathname.startsWith('/catalog') ? css.active : ''}
                 aria-current={
-                  pathname.startsWith("/catalog") ? "page" : undefined
+                  pathname.startsWith('/catalog') ? 'page' : undefined
                 }
               >
                 Psychologists
@@ -44,8 +43,8 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        
-          <AuthNavigation />
+
+        <AuthNavigation />
       </div>
     </header>
   );

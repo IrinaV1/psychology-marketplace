@@ -1,6 +1,6 @@
 .authNavigation {
   display: flex;
-margin-left: auto;
+  margin-left: auto;
   gap: 8px;
 }
 .btnLogin {
@@ -14,7 +14,6 @@ margin-left: auto;
   height: 48px;
   background-color: transparent;
 
-  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -29,9 +28,8 @@ margin-left: auto;
   border-radius: 30px;
   width: 171px;
   height: 48px;
-  background-color: #54be96;
+  background-color: #fc832c;
 
-  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
