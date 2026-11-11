@@ -112,3 +112,46 @@
   fill: #fbfbfb;
   rotate: -15deg;
 }
+.checkBlock {
+  position: absolute;
+  bottom: 75px;
+  left: -101px;
+  width: 311px;
+  height: 118px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  background-color: #fc832c;
+}
+
+.wrapperIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  width: 54px;
+  height: 54px;
+  background-color: #fbfbfb;
+}
+.checkIcon {
+  fill: #fc832c;
+}
+.wrapperBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.checkText {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(251, 251, 251, 0.5);
+}
+.checkAccent {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fbfbfb;
+}

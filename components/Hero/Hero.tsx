@@ -61,14 +61,20 @@ export default function Hero() {
             </svg>
           </div>
           <div className={css.checkBlock}>
-            <svg
-              className={css.checkIcon}
-              width="40"
-              height="40"
-              aria-hidden="true"
-            >
-              <use href="/icons.svg#icon-check" />
-            </svg>
+            <div className={css.wrapperIcon}>
+              <svg
+                className={css.checkIcon}
+                width="40"
+                height="40"
+                aria-hidden="true"
+              >
+                <use href="/icons.svg#icon-check" />
+              </svg>
+            </div>
+            <div className={css.wrapperBlock}>
+              <p className={css.checkText}>Experienced psychologists</p>
+              <p className={css.checkAccent}>15,000</p>
+            </div>
           </div>
         </div>
       </div>
