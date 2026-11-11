@@ -11,13 +11,8 @@ export default function Header() {
     <header className={css.header}>
       <div className={`${css.headerContainer} container`}>
         <Link className={css.logo} href="/" aria-label="Home">
-          <Image
-            src="/logo.svg"
-            alt="PsychologistsServices"
-            width={218}
-            height={24}
-            priority
-          />
+          <span className={css.logoFirst}>psychologists</span>
+          <span className={css.logoSecond}>.services</span>
         </Link>
         <nav className={css.navigation} aria-label="Main Navigation">
           <ul className={css.list}>

@@ -19,25 +19,57 @@ export default function Hero() {
           </p>
           <Link className={css.link} href="/psychologists">
             Get Started
-            <Image
+            <svg
               className={css.arrowIcon}
-              src="/arrow.svg"
-              alt="arrow icon"
-              width={14}
-              height={16}
-            />
+              width="14"
+              height="16"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#icon-arrow" />
+            </svg>
           </Link>
         </div>
-        <div className="containerImage">
+        <div className={css.containerImage}>
           <Image
+            className={css.image}
             src="/hero.jpg"
             alt="Scenic landscape"
             width={464}
             height={528}
             priority
             fetchPriority="high"
-            sizes="100vw"
+            sizes="(max-width: 464px) 100vw, 464px"
           />
+          <div className={css.questionBlock}>
+            <svg
+              className={css.questionIcon}
+              width="10"
+              height="17"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#icon-question" />
+            </svg>
+          </div>
+          <div className={css.usersBlock}>
+            <svg
+              className={css.usersIcon}
+              width="25"
+              height="25"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#icon-users" />
+            </svg>
+          </div>
+          <div className={css.checkBlock}>
+            <svg
+              className={css.checkIcon}
+              width="40"
+              height="40"
+              aria-hidden="true"
+            >
+              <use href="/icons.svg#icon-check" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>

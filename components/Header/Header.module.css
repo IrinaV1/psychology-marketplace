@@ -27,8 +27,10 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  flex-shrink: 0;
-  line-height: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-decoration: none;
   margin-right: clamp(15px, 9vw, 130px);
   transition: opacity 200ms ease;
 }
@@ -36,7 +38,15 @@
 .logo:hover {
   opacity: 0.8;
 }
+.logoFirst {
+  font-weight: 700;
+  color: #fc832c;
+}
 
+.logoSecond {
+  font-weight: 600;
+  color: #191a15;
+}
 .navigation {
   display: flex;
   align-items: center;
