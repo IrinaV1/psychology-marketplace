@@ -63,14 +63,16 @@
   width: 100%;
   height: auto;
   max-width: 464px;
-
+  aspect-ratio: 1 / 1;
   max-height: 526px;
+  flex-shrink: 0;
 }
+
 .image {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
 }
 .questionBlock {

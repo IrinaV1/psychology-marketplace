@@ -61,7 +61,6 @@ img {
   height: auto;
 }
 
-
 button {
   cursor: pointer;
   border: none;
@@ -69,21 +68,19 @@ button {
 .container {
   width: 100%;
   max-width: 1440px;
-  padding: 0 128px;
+  padding-inline: clamp(16px, 8.89vw, 128px);
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1439px) {
+/* @media screen and (max-width: 1439px) {
   .container {
-    /* max-width: 768px; */
+
     padding: 0 32px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .container {
-    /* min-width: 320px;
-    max-width: 375px; */
+  
     padding: 0 16px;
   }
-}
+} */

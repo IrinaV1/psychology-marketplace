@@ -1,6 +1,5 @@
 .authNavigation {
   display: flex;
-  margin-left: auto;
   gap: 8px;
 }
 .btnLogin {
@@ -35,4 +34,8 @@
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: #fbfbfb;
+}
+@media (max-width: 767px) {
+  .authNavigation {
+  }
 }
