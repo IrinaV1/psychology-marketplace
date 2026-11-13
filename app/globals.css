@@ -68,19 +68,18 @@ button {
 .container {
   width: 100%;
   max-width: 1440px;
-  padding-inline: clamp(16px, 8.89vw, 128px);
+  padding-inline: clamp(34px, calc(34px + (100vw - 768px) * 0.1399), 128px);
   margin: 0 auto;
 }
 
 /* @media screen and (max-width: 1439px) {
   .container {
-
-    padding: 0 32px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  
-    padding: 0 16px;
+    padding-inline: clamp(34px, 5vw, 64px);
   }
 } */
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-inline: clamp(16px, calc(16px + (100vw - 320px) * 0.0709), 34px);
+  }
+}
