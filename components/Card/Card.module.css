@@ -1,0 +1,158 @@
+.cardContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 24px;
+  border-radius: 24px;
+  max-width: 1184px;
+  height: 358px;
+  background-color: #fbfbfb;
+}
+.containerAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid rgba(252, 131, 44, 0.2);
+  border-radius: 30px;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+.cardAvatar {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+.containerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+  height: auto;
+}
+.containerInfo > :last-child {
+  margin-top: -10px;
+}
+.wrapperAbout {
+  max-width: 174px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cardProfession {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.cardUserName {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: #191a15;
+  white-space: nowrap;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  border-radius: 24px;
+  padding: 8px 16px;
+
+  height: 40px;
+
+  background-color: #f3f3f3;
+}
+
+.itemLabel {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+.itemValue {
+  color: #191a15;
+  margin-left: 10px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(25, 26, 21, 0.5);
+}
+.readMoreBtn {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #191a15;
+  background-color: transparent;
+  width: 82px;
+  height: 24px;
+}
+.cardMeta {
+  position: absolute;
+  top: 24px;
+  right: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardStats {
+  display: flex;
+  align-items: center;
+}
+.cardStar {
+  fill: #ffc531;
+  margin-right: 8px;
+}
+.rating,
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #191a15;
+}
+.rating::after {
+  content: '|';
+  margin: 0 16px;
+  color: rgba(25, 26, 21, 0.2);
+  height: 16;
+}
+.accentPrice {
+  color: #38cd3e;
+}
+.cardHeart {
+  fill: transparent;
+  stroke-width: 2px;
+  stroke: #191a15;
+}
+.favoriteButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
