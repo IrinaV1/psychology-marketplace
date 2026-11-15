@@ -6,7 +6,8 @@
   padding: 24px;
   border-radius: 24px;
   max-width: 1184px;
-  height: 358px;
+  min-height: 358px;
+  height: auto;
   background-color: #fbfbfb;
 }
 .containerAvatar {

@@ -1,0 +1,45 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #8a8a89;
+}
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  outline: none;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px 14px;
+  width: 226px;
+  height: 48px;
+  background-color: #fc832c;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fbfbfb;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select:focus {
+  outline: none;
+  box-shadow: none;
+}
+.select option {
+  background-color: #fff;
+  color: #121212;
+  padding: 10px;
+  border-radius: 14px;
+  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+}
