@@ -1,0 +1,48 @@
+.containerReviewCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.wrapperReviewInfo {
+  display: flex;
+  gap: 12px;
+}
+.reviewUserImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background-color: rgba(252, 131, 44, 0.2);
+}
+.userImg {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: #fc832c;
+}
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #191a15;
+}
+.rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.ratingIcon {
+  fill: #ffc531;
+}
+.ratingNum {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #191a15;
+}

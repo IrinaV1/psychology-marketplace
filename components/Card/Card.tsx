@@ -2,7 +2,13 @@
 
 import Image from 'next/image';
 import css from './Card.module.css';
+import { useState } from 'react';
+import ReviewList from '../ReviewList/ReviewList';
+
 export default function Card() {
+  const [] = useState(false);
+  const handleClick = () => {};
+
   return (
     <div className={css.cardContainer}>
       <div className={css.containerAvatar}>
@@ -63,6 +69,7 @@ export default function Card() {
         <button className={css.readMoreBtn} type="button">
           Read more
         </button>
+        <ReviewList />
       </div>
       <div className={css.cardMeta}>
         <div className={css.cardStats}>
