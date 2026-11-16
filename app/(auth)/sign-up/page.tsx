@@ -1,13 +1,6 @@
-'use client';
-import { useState } from 'react';
 import css from './SignUpPage.module.css';
-import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const router = useRouter();
   <main className={css.mainContent}>
     <div className={css.containerTitle}>
       <h1 className={css.formTitle}>Registration</h1>
@@ -51,14 +44,14 @@ export default function SignUpPage() {
           required
         />
       </div>
-
+      {/* 
       <div className={css.actions}>
         <button disabled={isLoading} type="submit" className={css.submitButton}>
           Sign Up
         </button>
-      </div>
+      </div> */}
 
-      {error && <p className={css.error}>{error}</p>}
+      {/* {error && <p className={css.error}>{error}</p>} */}
     </form>
   </main>;
 }

@@ -7,7 +7,7 @@ export default function PsychologistsPage() {
   return (
     <main className={css.main}>
       <div className="container">
-        <Header />
+        {/* <Header /> */}
 
         <Filters />
         <Card />
