@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 32px;
+  max-width: 226px;
 }
 .title {
   font-weight: 500;
@@ -10,10 +11,13 @@
   line-height: 1.28571;
   color: #8a8a89;
 }
+.selectWrapper {
+  position: relative;
+}
 .select {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   outline: none;
   border: none;
@@ -27,6 +31,7 @@
   font-size: 16px;
   line-height: 1.25;
   color: #fbfbfb;
+  cursor: pointer;
 
   appearance: none;
   -webkit-appearance: none;
@@ -34,7 +39,6 @@
 }
 .select:focus {
   outline: none;
-  box-shadow: none;
 }
 .select option {
   background-color: #fff;
@@ -42,4 +46,68 @@
   padding: 10px;
   border-radius: 14px;
   box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+}
+.chevronIcon {
+  flex-shrink: 0;
+
+  stroke: #fbfbfb;
+  stroke-width: 2px;
+  fill: none;
+  transition: transform 450ms ease-in-out;
+}
+.rotated {
+  transform: rotate(180deg);
+}
+.options {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 226px;
+  height: 216px;
+  padding: 14px 18px;
+  margin: 0;
+
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+
+  opacity: 0;
+
+  visibility: hidden;
+  transition:
+    opacity 300ms ease,
+    visibility 0s linear 250ms;
+}
+
+.options.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 300ms ease-in-out,
+    visibility 0s;
+}
+.option {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+  color: rgba(25, 26, 21, 0.3);
+
+  cursor: pointer;
+}
+
+.option.active {
+  color: #191a15;
 }
