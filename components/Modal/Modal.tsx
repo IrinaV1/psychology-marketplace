@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 
@@ -10,16 +10,19 @@ interface ModalProps {
   children: ReactNode;
   size?: 'auth' | 'appointment';
 }
-
+const emptySubscribe = () => () => {};
 export default function Modal({
   onClose,
   children,
   size = 'auth',
 }: ModalProps) {
-  const [mounted, setMounted] = useState(false);
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
-    setMounted(true);
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         console.log(e.key);
@@ -40,15 +43,14 @@ export default function Modal({
       onClose();
     }
   };
-  if (!mounted) return null;
+  if (!isClient) return null;
   return createPortal(
-    <div
-      onClick={handleBackdropClick}
-      className={css.backdrop}
-      aria-modal="true"
-      role="dialog"
-    >
-      <div className={`${css.modal} ${css[size]}`}>
+    <div onClick={handleBackdropClick} className={css.backdrop}>
+      <div
+        className={`${css.modal} ${css[size]}`}
+        role="dialog"
+        aria-modal="true"
+      >
         <button
           type="button"
           className={css.closeButton}
