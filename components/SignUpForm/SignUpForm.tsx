@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import css from './SignUpForm.module.css';
+import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -60,22 +61,10 @@ export default function SignUpForm() {
               placeholder="Password"
               required
             />
-            <button
-              type="button"
-              className={css.eyeButton}
-              onClick={() => setShowPassword(prev => !prev)}
-              aria-label={showPassword ? 'Hide password' : 'Show password'}
-            >
-              {showPassword ? (
-                <svg className={css.passwordIcon} width="20" height="20">
-                  <use href="/icons.svg#icon-eye" />
-                </svg>
-              ) : (
-                <svg className={css.passwordIcon} width="20" height="20">
-                  <use href="/icons.svg#icon-eye-off" />
-                </svg>
-              )}
-            </button>
+            <ShowPasswordButton
+              isVisible={showPassword}
+              onToggle={() => setShowPassword(prev => !prev)}
+            />
           </div>
         </div>
 
