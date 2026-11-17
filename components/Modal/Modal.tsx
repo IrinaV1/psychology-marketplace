@@ -40,8 +40,8 @@ export default function Modal({ onClose, children }: ModalProps) {
     <div
       onClick={handleBackdropClick}
       className={css.backdrop}
-      role="dialog"
       aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div className={css.modal}>
         <button
@@ -49,7 +49,9 @@ export default function Modal({ onClose, children }: ModalProps) {
           onClick={onClose}
           aria-label="Close modal"
         >
-          &times;
+          <svg className={css.menuClose} width="32" height="32">
+            <use href="/icons.svg#icon-close" />
+          </svg>
         </button>
         {children}
       </div>
