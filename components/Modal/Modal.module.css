@@ -15,10 +15,16 @@
   background-color: #fbfbfb;
   padding: 64px;
   border-radius: 30px;
-  width: 565px;
+  width: 100%;
 
   min-height: 510px;
   position: relative;
+}
+.auth {
+  max-width: 565px;
+}
+.appointment {
+  max-width: 600px;
 }
 .closeButton {
   position: absolute;

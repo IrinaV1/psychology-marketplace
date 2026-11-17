@@ -8,9 +8,14 @@ import css from './Modal.module.css';
 interface ModalProps {
   onClose: () => void;
   children: ReactNode;
+  size?: 'auth' | 'appointment';
 }
 
-export default function Modal({ onClose, children }: ModalProps) {
+export default function Modal({
+  onClose,
+  children,
+  size = 'auth',
+}: ModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -41,10 +46,11 @@ export default function Modal({ onClose, children }: ModalProps) {
       onClick={handleBackdropClick}
       className={css.backdrop}
       aria-modal="true"
-      aria-labelledby="modal-title"
+      role="dialog"
     >
-      <div className={css.modal}>
+      <div className={`${css.modal} ${css[size]}`}>
         <button
+          type="button"
           className={css.closeButton}
           onClick={onClose}
           aria-label="Close modal"

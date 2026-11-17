@@ -61,7 +61,7 @@
   gap: 8px;
 }
 
-.submitButton {
+/* .submitButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@
 .submitButton:disabled {
   background-color: rgba(252, 131, 44, 0.2);
   cursor: not-allowed;
-}
+} */
 
 .error {
   color: #dc3545;

@@ -3,6 +3,7 @@
 import css from './SignInForm.module.css';
 import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
 import { useState } from 'react';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,13 +55,7 @@ export default function SignInForm() {
         </div>
 
         <div className={css.actions}>
-          <button
-            // disabled={isLoading}
-            type="submit"
-            className={css.submitButton}
-          >
-            Log In
-          </button>
+          <SubmitButton>Log In</SubmitButton>
         </div>
 
         {/* {error && <p className={css.error}>{error}</p>} */}
