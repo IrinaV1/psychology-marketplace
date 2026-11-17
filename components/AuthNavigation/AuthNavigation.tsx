@@ -1,16 +1,16 @@
 'use client';
+import AuthLink from '../AuthButton/AuthLink';
 import css from './AuthNavigation.module.css';
-import Link from 'next/link';
 
 export default function AuthNavigation() {
   return (
     <div className={css.authNavigation}>
-      <Link className={css.btnLogin} href="/sign-in">
+      <AuthLink variant="login" href="/sign-in">
         Log In
-      </Link>
-      <Link className={css.btnRegister} href="/sign-up">
+      </AuthLink>
+      <AuthLink variant="register" href="/sign-up">
         Registration
-      </Link>
+      </AuthLink>
     </div>
   );
 }

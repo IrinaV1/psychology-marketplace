@@ -1,4 +1,4 @@
-'use click';
+'use client';
 
 import css from './SubmitButton.module.css';
 
