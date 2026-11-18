@@ -55,7 +55,9 @@ export default function SignInForm() {
         </div>
 
         <div className={css.actions}>
-          <Button type="submit">Log In</Button>
+          <Button type="submit" className={css.btnSignIn}>
+            Log In
+          </Button>
         </div>
 
         {/* {error && <p className={css.error}>{error}</p>} */}

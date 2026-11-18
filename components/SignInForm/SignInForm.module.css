@@ -88,7 +88,11 @@
   background-color: rgba(252, 131, 44, 0.2);
   cursor: not-allowed;
 } */
-
+.btnSignIn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+}
 .error {
   color: #dc3545;
   font-size: 12px;

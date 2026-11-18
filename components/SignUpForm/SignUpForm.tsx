@@ -70,7 +70,9 @@ export default function SignUpForm() {
         </div>
 
         <div className={css.actions}>
-          <Button type="submit" size="large">Sign Up</Button>
+          <Button type="submit" className={css.btnSignUp}>
+            Sign Up
+          </Button>
         </div>
 
         {/* {error && <p className={css.error}>{error}</p>} */}

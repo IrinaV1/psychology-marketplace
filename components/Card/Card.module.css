@@ -30,12 +30,19 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 24px;
+
   height: auto;
 }
-.containerInfo > :last-child {
-  margin-top: -10px;
+.wrapperInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-bottom: 14px;
 }
+/* .containerInfo > :last-child {
+  margin-top: -10px;
+} */
 .wrapperAbout {
   max-width: 174px;
   display: flex;
@@ -106,6 +113,7 @@
   background-color: transparent;
   width: 82px;
   height: 24px;
+  margin-bottom: 0;
 }
 .cardMeta {
   position: absolute;
@@ -156,4 +164,13 @@
   border: none;
   background: transparent;
   cursor: pointer;
+}
+.reviews {
+  margin-top: 48px;
+}
+.btnAppointment {
+  padding: 14px 32px;
+  align-self: flex-start;
+  margin-top: 40px;
+  width: 227px;
 }

@@ -8,6 +8,7 @@ export default function ReviewList() {
       <ReviewCard
       //   key={review.id}
       />
+      <ReviewCard />
       {/* ))} */}
     </ul>
   );

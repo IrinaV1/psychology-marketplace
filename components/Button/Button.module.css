@@ -13,8 +13,8 @@
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  
-  margin-top: 22px;
+
+  /* margin-top: 22px; */
 }
 
 .button:hover {
@@ -24,11 +24,4 @@
 .button:disabled {
   background-color: rgba(252, 131, 44, 0.2);
   cursor: not-allowed;
-}
-.medium {
-padding: 14px 32px;
-} 
-.large { 
-    padding: 16px;
-  width: 100%;
 }
