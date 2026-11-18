@@ -1,5 +1,5 @@
 'use client';
-import AuthLink from '../AuthButton/AuthLink';
+import AuthLink from '../AuthLink/AuthLink';
 import css from './AuthNavigation.module.css';
 
 export default function AuthNavigation() {

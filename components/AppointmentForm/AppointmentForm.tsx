@@ -1,6 +1,6 @@
 'use client';
 
-import SubmitButton from '../SubmitButton/SubmitButton';
+import SubmitButton from '../Button/Button';
 import css from './AppointmentForm.module.css';
 
 export default function AppointmentForm() {

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import css from './Card.module.css';
 import { useState } from 'react';
 import ReviewList from '../ReviewList/ReviewList';
+import Button from '../Button/Button';
 
 export default function Card() {
   const [] = useState(false);
@@ -70,6 +71,7 @@ export default function Card() {
           Read more
         </button>
         <ReviewList />
+        <Button size="medium">Make an appointment</Button>
       </div>
       <div className={css.cardMeta}>
         <div className={css.cardStats}>

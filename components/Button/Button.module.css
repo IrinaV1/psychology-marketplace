@@ -1,8 +1,8 @@
-.submitButton {
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -13,15 +13,22 @@
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  width: 100%;
+  
   margin-top: 22px;
 }
 
-.submitButton:hover {
+.button:hover {
   background-color: #f37113;
 }
 
-.submitButton:disabled {
+.button:disabled {
   background-color: rgba(252, 131, 44, 0.2);
   cursor: not-allowed;
+}
+.medium {
+padding: 14px 32px;
+} 
+.large { 
+    padding: 16px;
+  width: 100%;
 }

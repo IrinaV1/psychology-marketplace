@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import css from './SignUpForm.module.css';
 import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import Button from '../Button/Button';
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -70,7 +70,7 @@ export default function SignUpForm() {
         </div>
 
         <div className={css.actions}>
-          <SubmitButton>Sign Up</SubmitButton>
+          <Button type="submit" size="large">Sign Up</Button>
         </div>
 
         {/* {error && <p className={css.error}>{error}</p>} */}
