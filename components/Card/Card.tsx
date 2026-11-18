@@ -5,12 +5,15 @@ import css from './Card.module.css';
 import { useState } from 'react';
 import ReviewList from '../ReviewList/ReviewList';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+import AppointmentForm from '../AppointmentForm/AppointmentForm';
 
 export default function Card() {
-  const [] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleClick = () => {};
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className={css.cardContainer}>
@@ -78,13 +81,14 @@ export default function Card() {
             type="button"
             onClick={() => setIsExpanded(true)}
           >
-            {' '}
             Read more
           </button>
         ) : (
           <div className={css.reviews}>
             <ReviewList />
-            <Button className={css.btnAppointment}>Make an appointment</Button>
+            <Button className={css.btnAppointment} onClick={openModal}>
+              Make an appointment
+            </Button>
           </div>
         )}
       </div>
@@ -110,6 +114,11 @@ export default function Card() {
           <use href="/icons.svg#icon-heart" />
         </svg>
       </button>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <AppointmentForm />
+        </Modal>
+      )}
     </div>
   );
 }

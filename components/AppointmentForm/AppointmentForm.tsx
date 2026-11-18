@@ -1,6 +1,6 @@
 'use client';
 
-import SubmitButton from '../Button/Button';
+import Button from '../Button/Button';
 import css from './AppointmentForm.module.css';
 
 export default function AppointmentForm() {
@@ -59,7 +59,9 @@ export default function AppointmentForm() {
         </div>
 
         <div className={css.actions}>
-          <SubmitButton>Send</SubmitButton>
+          <Button type="submit" className={css.btnAppointment}>
+            Send{' '}
+          </Button>
         </div>
 
         {/* {error && <p className={css.error}>{error}</p>} */}
