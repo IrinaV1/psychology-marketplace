@@ -1,13 +1,38 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .containerTitle {
   width: 100%;
-  max-width: 438px;
   margin-bottom: 40px;
+}
+.containerPsychologists {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.wrapperAbout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.appointmentAvatar {
+  display: block;
+  object-fit: cover;
+}
+.profession {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8a8a89;
+}
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #191a15;
 }
 .formTitle {
   font-weight: 500;
@@ -28,16 +53,24 @@
   flex-direction: column;
   gap: 18px;
   width: 100%;
-  max-width: 438px;
 }
 .formGroup {
+  position: relative;
   display: flex;
   flex-direction: column;
   font-size: 14px;
   font-weight: 500;
   color: #212529;
 }
-
+.formRow {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.formRow .formGroup {
+  flex: 1;
+  min-width: 0;
+}
 .input {
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
@@ -55,39 +88,23 @@
   outline: none;
   box-shadow: none;
 }
+.textarea {
+  height: 116px;
+  resize: none;
+  font-family: inherit;
+}
+.time {
+  width: 100%;
+}
+.phone {
+  width: 100%;
+}
 .actions {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
 }
-/* 
-.submitButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  background-color: #fc832c;
-  color: #fbfbfb;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 100%;
-  margin-top: 22px;
-}
 
-.submitButton:hover {
-  background-color: #f37113;
-}
-
-.submitButton:disabled {
-  background-color: rgba(252, 131, 44, 0.2);
-  cursor: not-allowed;
-} */
 .btnAppointment {
   width: 100%;
   padding: 16px;
@@ -115,4 +132,17 @@
   position: relative;
   width: 100%;
   height: 116px;
+}
+.input[type='time'] {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #191a15;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.input[type='time']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
 }

@@ -1,0 +1,129 @@
+.timePicker {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+.timeDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: -16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+
+  width: 151px;
+  height: 180px;
+  padding: 16px;
+
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.timeTitle {
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #191a15;
+  text-align: left;
+}
+
+.timeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #191a15;
+
+  cursor: pointer;
+}
+.clock {
+  stroke: #191a15;
+  fill: none;
+}
+.timeList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  /* height: calc(100% - 32px); */
+  box-sizing: border-box;
+  gap: 4px;
+  overflow-y: auto;
+  list-style: none;
+  /* margin: 0 auto; */
+  scrollbar-width: none;
+}
+.timeList::-webkit-scrollbar {
+  display: none;
+}
+.timeList li {
+  display: flex;
+  flex-direction: column;
+
+  height: 24px;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.timeOption {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+
+  border: none;
+  background: transparent;
+  width: 100%;
+  height: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: rgba(25, 26, 21, 0.3);
+
+  cursor: pointer;
+}
+
+.timeOption:hover {
+  background-color: rgba(25, 26, 21, 0.05);
+}
+
+.selected {
+  color: #191a15;
+}
+.times {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  width: 87px;
+  height: 24px;
+}
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  width: 38px;
+  height: 24px;
+}
+.timeColon {
+  margin: 0 2px;
+}

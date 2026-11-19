@@ -115,7 +115,7 @@ export default function Card() {
         </svg>
       </button>
       {isModalOpen && (
-        <Modal onClose={closeModal}>
+        <Modal onClose={closeModal} size="appointment">
           <AppointmentForm />
         </Modal>
       )}
