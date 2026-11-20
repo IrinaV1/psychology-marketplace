@@ -1,6 +1,7 @@
 .authNavigation {
   display: flex;
   gap: 8px;
+  max-width: 303px;
 }
 /* .btnLogin {
   display: flex;

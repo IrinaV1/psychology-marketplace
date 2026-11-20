@@ -1,0 +1,29 @@
+.userNavigation {
+  display: flex;
+  gap: 28px;
+}
+.userContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+}
+.userWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fc832c;
+}
+.userIcon {
+  fill: #fbfbfb;
+}
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #191a15;
+}

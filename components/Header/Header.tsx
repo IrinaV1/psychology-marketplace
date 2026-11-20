@@ -6,11 +6,20 @@ import { usePathname } from 'next/navigation';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 import { useState } from 'react';
 import { RiMenuSearchLine } from 'react-icons/ri';
+import UserNavigation from '../UserNavigation/UserNavigation';
 
-export default function Header() {
+interface HeaderProps {
+  isAuthenticated: boolean;
+  userName?: string;
+}
+
+export default function Header({ isAuthenticated, userName }: HeaderProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const isPsychologistsPage = pathname.startsWith('/psychologists');
+  const isFavoritesPage = pathname === '/favorites';
 
   return (
     <header className={css.header}>
@@ -42,26 +51,43 @@ export default function Header() {
             <li className={css.item}>
               <Link
                 href={'/psychologists'}
-                className={
-                  pathname.startsWith('/psychologists') ? css.active : ''
-                }
-                aria-current={
-                  pathname.startsWith('/psychologists') ? 'page' : undefined
-                }
+                className={isPsychologistsPage ? css.active : ''}
+                aria-current={isPsychologistsPage ? 'page' : undefined}
               >
                 Psychologists
               </Link>
             </li>
+            {isAuthenticated && (
+              <li className={css.item}>
+                <Link
+                  href="/favorites"
+                  className={isFavoritesPage ? css.active : ''}
+                  aria-current={isFavoritesPage ? 'page' : undefined}
+                  onClick={closeMenu}
+                >
+                  Favorites
+                </Link>
+              </li>
+            )}
           </ul>
           <div className={css.mobileAuth}>
-            <AuthNavigation />
+            {isAuthenticated ? (
+              <UserNavigation userName={userName ?? ''} />
+            ) : (
+              <AuthNavigation />
+            )}
           </div>
         </nav>
         <div className={css.desktopAuth}>
-          <AuthNavigation />
+          {isAuthenticated ? (
+            <UserNavigation userName={userName ?? ''} />
+          ) : (
+            <AuthNavigation />
+          )}
         </div>
 
         <button
+          type="button"
           className={css.menuButton}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
