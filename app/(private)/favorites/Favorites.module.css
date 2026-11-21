@@ -1,4 +1,10 @@
 .main {
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 160px;
+  padding-bottom: 100px;
+}
+.loadMoreBtn {
+  padding: 14px;
+
+  width: 176px;
+  height: 48px;
 }

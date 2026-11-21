@@ -3,7 +3,7 @@ import css from './Button.module.css';
 
 type SubmitButtonProps = {
   children: ReactNode;
-  className: string;
+  className?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   onClick?: () => void;

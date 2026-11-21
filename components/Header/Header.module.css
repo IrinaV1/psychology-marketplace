@@ -95,6 +95,26 @@
   width: 40px;
   height: 40px;
 }
+
+.item a {
+  position: relative;
+}
+.item a::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fc832c;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.item a.active::before {
+  opacity: 1;
+}
 @media (max-width: 1023px) {
   .navigation {
     position: fixed;
