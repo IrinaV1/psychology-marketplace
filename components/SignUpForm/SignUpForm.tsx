@@ -4,9 +4,31 @@ import { useState } from 'react';
 import css from './SignUpForm.module.css';
 import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
 import Button from '../Button/Button';
+import { useRouter } from 'next/navigation';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  registrationFormSchema,
+  RegistrationFormValues,
+} from './SignUpForm-schema';
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegistrationFormValues>({
+    resolver: yupResolver(registrationFormSchema),
+    defaultValues: { username: '', email: '', password: '' },
+  });
+
+  const onSubmit: SubmitHandler<RegistrationFormValues> = data =>
+    console.log(data);
 
   return (
     <div className={css.mainContent}>
@@ -18,10 +40,7 @@ export default function SignUpForm() {
           information.
         </p>
       </div>
-      <form
-        // action={handleSubmit}
-        className={css.form}
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.formGroup}>
           <label htmlFor="name" className={css.visuallyHidden}>
             Name
@@ -29,11 +48,13 @@ export default function SignUpForm() {
           <input
             id="name"
             type="text"
-            name="name"
             className={css.input}
             placeholder="Name"
-            required
+            {...register('username')}
           />
+          {errors.username && (
+            <p className={css.error}>{errors.username.message}</p>
+          )}
         </div>
         <div className={css.formGroup}>
           <label htmlFor="email" className={css.visuallyHidden}>
@@ -42,11 +63,11 @@ export default function SignUpForm() {
           <input
             id="email"
             type="email"
-            name="email"
             className={css.input}
             placeholder="Email"
-            required
+            {...register('email')}
           />
+          {errors.email && <p className={css.error}>{errors.email.message}</p>}
         </div>
 
         <div className={css.formGroup}>
@@ -57,11 +78,13 @@ export default function SignUpForm() {
             <input
               id="password"
               type={showPassword ? 'text' : 'password'}
-              name="password"
               className={css.input}
               placeholder="Password"
-              required
+              {...register('password')}
             />
+            {errors.password && (
+              <p className={css.error}>{errors.password.message}</p>
+            )}
             <ShowPasswordButton
               isVisible={showPassword}
               onToggle={() => setShowPassword(prev => !prev)}
@@ -74,8 +97,8 @@ export default function SignUpForm() {
             Sign Up
           </Button>
         </div>
-
-        {/* {error && <p className={css.error}>{error}</p>} */}
+        {/* 
+        {error && <p className={css.error}>{error}</p>} */}
       </form>
     </div>
   );
