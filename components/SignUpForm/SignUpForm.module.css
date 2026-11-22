@@ -94,6 +94,9 @@
   padding: 16px;
   margin-top: 22px;
 }
+.btnSignUp:active {
+  scale: 1.5;
+}
 .error {
   position: absolute;
   bottom: -15px;

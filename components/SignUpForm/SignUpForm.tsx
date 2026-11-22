@@ -4,15 +4,19 @@ import { useState } from 'react';
 import css from './SignUpForm.module.css';
 import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
 import Button from '../Button/Button';
-import { useRouter } from 'next/navigation';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   registrationFormSchema,
   RegistrationFormValues,
 } from './SignUpForm-schema';
+import { registerUser } from '@/lib/firebase/auth';
+import { useRouter } from 'next/navigation';
 
-export default function SignUpForm() {
+interface SignUpFormProps {
+  onSuccess?: () => void;
+}
+export default function SignUpForm({ onSuccess }: SignUpFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -27,8 +31,31 @@ export default function SignUpForm() {
     defaultValues: { username: '', email: '', password: '' },
   });
 
-  const onSubmit: SubmitHandler<RegistrationFormValues> = data =>
-    console.log(data);
+  const onSubmit: SubmitHandler<RegistrationFormValues> = async data => {
+    setError('');
+    setIsLoading(true);
+    try {
+      await registerUser(data.username, data.email, data.password);
+      // router.push('/psychologists');
+      onSuccess?.();
+    } catch (error) {
+      console.error('Firebase error:', error);
+
+      const errorCode = (error as { code?: string }).code;
+
+      if (errorCode === 'auth/email-already-in-use') {
+        setError('This email is already registered.');
+      } else if (errorCode === 'auth/weak-password') {
+        setError('Password should be at least 6 characters.');
+      } else if (errorCode === 'auth/invalid-email') {
+        setError('Please enter a valid email address.');
+      } else {
+        setError('Registration failed. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={css.mainContent}>
@@ -82,14 +109,14 @@ export default function SignUpForm() {
               placeholder="Password"
               {...register('password')}
             />
-            {errors.password && (
-              <p className={css.error}>{errors.password.message}</p>
-            )}
             <ShowPasswordButton
               isVisible={showPassword}
               onToggle={() => setShowPassword(prev => !prev)}
             />
           </div>
+          {errors.password && (
+            <p className={css.error}>{errors.password.message}</p>
+          )}
         </div>
 
         <div className={css.actions}>
@@ -97,8 +124,8 @@ export default function SignUpForm() {
             Sign Up
           </Button>
         </div>
-        {/* 
-        {error && <p className={css.error}>{error}</p>} */}
+
+        {error && <p className={css.error}>{error}</p>}
       </form>
     </div>
   );

@@ -53,6 +53,7 @@ export default function Header({ isAuthenticated, userName }: HeaderProps) {
                 href={'/psychologists'}
                 className={isPsychologistsPage ? css.active : ''}
                 aria-current={isPsychologistsPage ? 'page' : undefined}
+                onClick={closeMenu}
               >
                 Psychologists
               </Link>

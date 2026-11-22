@@ -5,9 +5,12 @@ import { useRouter } from 'next/navigation';
 
 export default function SignUpModalPage() {
   const router = useRouter();
+  const handleSuccess = () => {
+    router.replace('/psychologists');
+  };
   return (
     <Modal onClose={() => router.back()}>
-      <SignUpForm />
+      <SignUpForm onSuccess={handleSuccess} />
     </Modal>
   );
 }
