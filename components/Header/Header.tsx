@@ -7,15 +7,13 @@ import AuthNavigation from '../AuthNavigation/AuthNavigation';
 import { useState } from 'react';
 import { RiMenuSearchLine } from 'react-icons/ri';
 import UserNavigation from '../UserNavigation/UserNavigation';
+import { useAuthStore } from '@/lib/store/authStore';
 
-interface HeaderProps {
-  isAuthenticated: boolean;
-  userName?: string;
-}
-
-export default function Header({ isAuthenticated, userName }: HeaderProps) {
+export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useAuthStore(state => state.user);
+  const isAuthenticated = Boolean(user);
   const closeMenu = () => setIsMenuOpen(false);
 
   const isPsychologistsPage = pathname.startsWith('/psychologists');
@@ -72,19 +70,11 @@ export default function Header({ isAuthenticated, userName }: HeaderProps) {
             )}
           </ul>
           <div className={css.mobileAuth}>
-            {isAuthenticated ? (
-              <UserNavigation userName={userName ?? ''} />
-            ) : (
-              <AuthNavigation />
-            )}
+            {user ? <UserNavigation userName={user} /> : <AuthNavigation />}
           </div>
         </nav>
         <div className={css.desktopAuth}>
-          {isAuthenticated ? (
-            <UserNavigation userName={userName ?? ''} />
-          ) : (
-            <AuthNavigation />
-          )}
+          {user ? <UserNavigation userName={user ?? ''} /> : <AuthNavigation />}
         </div>
 
         <button

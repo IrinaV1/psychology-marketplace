@@ -1,8 +1,9 @@
+import { User } from '@/types/user';
 import AuthLink from '../AuthLink/AuthLink';
 import css from './UserNavigation.module.css';
 
 interface UserNavigationProps {
-  userName: string;
+  userName: User;
 }
 
 export default function UserNavigation({ userName }: UserNavigationProps) {
@@ -14,7 +15,7 @@ export default function UserNavigation({ userName }: UserNavigationProps) {
             <use href="/icons.svg#icon-user" />
           </svg>
         </div>
-        <p className={css.userName}>{userName}</p>
+        <p className={css.userName}>{userName.displayName}</p>
       </div>
       <AuthLink variant="login" href="/">
         Log Out

@@ -12,6 +12,7 @@ import {
 } from './SignUpForm-schema';
 import { registerUser } from '@/lib/firebase/auth';
 import axios from 'axios';
+import { useAuthStore } from '@/lib/store/authStore';
 
 interface SignUpFormProps {
   onSuccess?: () => void;
@@ -20,6 +21,8 @@ export default function SignUpForm({ onSuccess }: SignUpFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const setUser = useAuthStore(state => state.setUser);
 
   const {
     register,
@@ -34,8 +37,9 @@ export default function SignUpForm({ onSuccess }: SignUpFormProps) {
     setError('');
     setIsLoading(true);
     try {
-      await registerUser(data.username, data.email, data.password);
+      const user = await registerUser(data.username, data.email, data.password);
       // router.push('/psychologists');
+      setUser(user);
       onSuccess?.();
     } catch (error) {
       if (axios.isAxiosError(error)) {
