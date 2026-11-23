@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
 import Header from '@/components/Header/Header';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -23,9 +24,11 @@ export default function RootLayout({ children, modal }: Props) {
   return (
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body>
-        <Header isAuthenticated={false} userName="Ilona" />
-        {children}
-        {modal}
+        <AuthProvider>
+          <Header isAuthenticated={false} userName="Ilona" />
+          {children}
+          {modal}
+        </AuthProvider>
       </body>
     </html>
   );

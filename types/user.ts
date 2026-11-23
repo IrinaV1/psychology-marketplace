@@ -1,4 +1,5 @@
 export interface User {
+  localId: string;
   email: string;
-  username: string;
+  displayName?: string;
 }

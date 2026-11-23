@@ -11,7 +11,7 @@ import {
   RegistrationFormValues,
 } from './SignUpForm-schema';
 import { registerUser } from '@/lib/firebase/auth';
-import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 interface SignUpFormProps {
   onSuccess?: () => void;
@@ -20,7 +20,6 @@ export default function SignUpForm({ onSuccess }: SignUpFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
 
   const {
     register,
@@ -39,16 +38,18 @@ export default function SignUpForm({ onSuccess }: SignUpFormProps) {
       // router.push('/psychologists');
       onSuccess?.();
     } catch (error) {
-      console.error('Firebase error:', error);
+      if (axios.isAxiosError(error)) {
+        const errorMessage = error.response?.data?.error;
 
-      const errorCode = (error as { code?: string }).code;
-
-      if (errorCode === 'auth/email-already-in-use') {
-        setError('This email is already registered.');
-      } else if (errorCode === 'auth/weak-password') {
-        setError('Password should be at least 6 characters.');
-      } else if (errorCode === 'auth/invalid-email') {
-        setError('Please enter a valid email address.');
+        if (errorMessage === 'auth/email-already-in-use') {
+          setError('This email is already registered.');
+        } else if (errorMessage === 'auth/weak-password') {
+          setError('Password should be at least 6 characters.');
+        } else if (errorMessage === 'auth/invalid-email') {
+          setError('Please enter a valid email address.');
+        } else {
+          setError('Registration failed. Please try again.');
+        }
       } else {
         setError('Registration failed. Please try again.');
       }
