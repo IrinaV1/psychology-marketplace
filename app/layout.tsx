@@ -25,7 +25,7 @@ export default function RootLayout({ children, modal }: Props) {
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body>
         <AuthProvider>
-          <Header isAuthenticated={false} userName="Ilona" />
+          <Header />
           {children}
           {modal}
         </AuthProvider>
