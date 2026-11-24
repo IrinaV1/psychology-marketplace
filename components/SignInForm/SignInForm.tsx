@@ -4,9 +4,40 @@ import css from './SignInForm.module.css';
 import ShowPasswordButton from '../ShowPasswordForm/ShowPasswordButton';
 import { useState } from 'react';
 import Button from '../Button/Button';
+import { LoginFormValues } from './SignInForm-schema';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { loginUser } from '@/lib/firebase/auth';
+
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/authStore';
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const setUser = useAuthStore(state => state.setUser);
+
+  const { register, handleSubmit } = useForm<LoginFormValues>();
+  const onSubmit: SubmitHandler<LoginFormValues> = async data => {
+    try {
+      setIsLoading(true);
+      const user = await loginUser(data.email, data.password);
+
+      setUser(user);
+      router.push('/psychologists');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const errorMessage = error.response?.data?.error;
+      } else {
+        console.error(error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <div className={css.mainContent}>
       <div className={css.containerTitle}>
@@ -17,6 +48,7 @@ export default function SignInForm() {
         </p>
       </div>
       <form
+        onSubmit={handleSubmit(onSubmit)}
         // action={handleSubmit}
         className={css.form}
       >
@@ -27,10 +59,10 @@ export default function SignInForm() {
           <input
             id="email"
             type="email"
-            name="email"
             className={css.input}
             placeholder="Email"
             required
+            {...register('email')}
           />
         </div>
 
@@ -42,10 +74,10 @@ export default function SignInForm() {
             <input
               id="password"
               type={showPassword ? 'text' : 'password'}
-              name="password"
               className={css.input}
               placeholder="Password"
               required
+              {...register('password')}
             />
             <ShowPasswordButton
               isVisible={showPassword}
@@ -60,7 +92,7 @@ export default function SignInForm() {
           </Button>
         </div>
 
-        {/* {error && <p className={css.error}>{error}</p>} */}
+        {error && <p className={css.error}>{error}</p>}
       </form>
     </div>
   );
