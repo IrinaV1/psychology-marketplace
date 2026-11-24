@@ -7,21 +7,41 @@
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  background-color: #fc832c;
-  color: #fbfbfb;
-  border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   /* margin-top: 22px; */
 }
+.primary {
+  background-color: #fc832c;
+  color: #fbfbfb;
+  border: none;
+}
+.primary:hover {
+  background-color: #f37113;
+}
+.outline {
+  color: #191a15;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  padding: 14px 39px;
+  background-color: transparent;
+}
 
-.button:hover {
+.outline:hover {
   background-color: #f37113;
 }
 
 .button:disabled {
   background-color: rgba(252, 131, 44, 0.2);
   cursor: not-allowed;
+}
+.logoutBtn {
+  color: #191a15;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  background-color: transparent;
+  padding: 14px 39px;
+}
+.logoutBtn:hover {
+  background-color: #f37113;
 }

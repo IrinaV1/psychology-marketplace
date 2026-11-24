@@ -13,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = useAuthStore(state => state.user);
-  const isAuthenticated = Boolean(user);
+  const isLoading = useAuthStore(state => state.isLoading);
   const closeMenu = () => setIsMenuOpen(false);
 
   const isPsychologistsPage = pathname.startsWith('/psychologists');
@@ -56,7 +56,7 @@ export default function Header() {
                 Psychologists
               </Link>
             </li>
-            {isAuthenticated && (
+            {!isLoading && user && (
               <li className={css.item}>
                 <Link
                   href="/favorites"
@@ -70,11 +70,13 @@ export default function Header() {
             )}
           </ul>
           <div className={css.mobileAuth}>
-            {user ? <UserNavigation userName={user} /> : <AuthNavigation />}
+            {!isLoading &&
+              (user ? <UserNavigation userName={user} /> : <AuthNavigation />)}
           </div>
         </nav>
         <div className={css.desktopAuth}>
-          {user ? <UserNavigation userName={user ?? ''} /> : <AuthNavigation />}
+          {!isLoading &&
+            (user ? <UserNavigation userName={user} /> : <AuthNavigation />)}
         </div>
 
         <button

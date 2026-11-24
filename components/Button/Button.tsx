@@ -7,6 +7,7 @@ type SubmitButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   onClick?: () => void;
+  variant?: 'primary' | 'outline';
 };
 
 export default function Button({
@@ -15,11 +16,12 @@ export default function Button({
   type = 'button',
   disabled = false,
   onClick,
+  variant = 'primary',
 }: SubmitButtonProps) {
   return (
     <button
       type={type}
-      className={`${css.button} ${className}`}
+      className={`${css.button} ${css[variant]} ${className}`}
       disabled={disabled}
       onClick={onClick}
     >
