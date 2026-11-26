@@ -23,7 +23,7 @@ export const firebaseApi = axios.create({
     key: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   },
 });
-export const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 
-export const FIREBASE_DATABASE_URL =
-  process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
+export const databaseApi = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+});

@@ -25,6 +25,8 @@
   width: 96px;
   height: 96px;
   flex-shrink: 0;
+  border-radius: 15px;
+  object-fit: cover;
 }
 .containerInfo {
   display: flex;

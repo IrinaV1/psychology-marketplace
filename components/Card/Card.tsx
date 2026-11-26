@@ -7,8 +7,13 @@ import ReviewList from '../ReviewList/ReviewList';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
+import { Psychologist } from '@/types/psychologist';
 
-export default function Card() {
+interface CardProps {
+  psychologist: Psychologist;
+}
+
+export default function Card({ psychologist }: CardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -20,8 +25,8 @@ export default function Card() {
       <div className={css.containerAvatar}>
         <Image
           className={css.cardAvatar}
-          src="/user.jpg"
-          alt="user"
+          src={psychologist.avatar_url}
+          alt={psychologist.name}
           width={96}
           height={96}
         />
@@ -31,28 +36,26 @@ export default function Card() {
         <div className={css.wrapperInfo}>
           <div className={css.wrapperAbout}>
             <p className={css.cardProfession}>Psychologist</p>
-            <p className={css.cardUserName}>Dr. Sarah Davis</p>
+            <p className={css.cardUserName}>{psychologist.name}</p>
           </div>
           <ul className={css.list}>
             <li className={css.item}>
               <p className={css.itemLabel}>
                 Experience:
-                <span className={css.itemValue}>12 years</span>
+                <span className={css.itemValue}>{psychologist.experience}</span>
               </p>
             </li>
             <li className={css.item}>
               <p className={css.itemLabel}>
                 License:
-                <span className={css.itemValue}>
-                  Licensed Psychologist (License #67890)
-                </span>
+                <span className={css.itemValue}>{psychologist.license}</span>
               </p>
             </li>
             <li className={css.item}>
               <p className={css.itemLabel}>
                 Specialization:
                 <span className={css.itemValue}>
-                  Depression and Mood Disorders
+                  {psychologist.specialization}
                 </span>
               </p>
             </li>
@@ -60,20 +63,12 @@ export default function Card() {
               <p className={css.itemLabel}>
                 Initial_consultation:
                 <span className={css.itemValue}>
-                  Free 45-minute initial consultation
+                  {psychologist.initial_consultation}
                 </span>
               </p>
             </li>
           </ul>
-          <div className={css.description}>
-            Dr. Sarah Davis is a highly experienced and licensed psychologist
-            specializing in Depression and Mood Disorders. With 12 years of
-            practice, she has helped numerous individuals overcome their
-            depression and regain control of their lives. Dr. Davis is known for
-            her empathetic and understanding approach to therapy, making her
-            clients feel comfortable and supported throughout their journey to
-            better mental health.
-          </div>
+          <div className={css.description}>{psychologist.about}</div>
         </div>
         {!isExpanded ? (
           <button
