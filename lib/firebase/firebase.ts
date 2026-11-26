@@ -2,6 +2,8 @@
 // import { getAuth } from 'firebase/auth';
 // import { getFirestore } from 'firebase/firestore';
 
+import axios from 'axios';
+
 // const firebaseConfig = {
 //   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 //   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,15 +17,19 @@
 
 // export const auth = getAuth(app);
 // export const db = getFirestore(app);
-import axios from 'axios';
+// import axios from 'axios';
 
-export const firebaseApi = axios.create({
-  baseURL: 'https://identitytoolkit.googleapis.com/v1/accounts',
-  params: {
-    key: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  },
-});
+// export const firebaseApi = axios.create({
+//   baseURL: 'https://identitytoolkit.googleapis.com/v1/accounts',
+//   params: {
+//     key: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+//   },
+// });
 
-export const databaseApi = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+// export const databaseApi = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+// });
+export const authApi = axios.create({
+  baseURL: '/api',
+  withCredentials: true,
 });

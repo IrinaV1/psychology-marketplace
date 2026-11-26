@@ -1,11 +1,6 @@
-import axios from 'axios';
-
 import { User } from '@/types/user';
+import { authApi } from './firebase';
 
-export const authApi = axios.create({
-  baseURL: '/api',
-  withCredentials: true,
-});
 // Registration
 export const registerUser = async (
   name: string,

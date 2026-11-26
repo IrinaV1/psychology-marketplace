@@ -8,3 +8,6 @@ export const api = axios.create({
     key: API_KEY,
   },
 });
+export const apiDatabase = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+});

@@ -1,15 +1,8 @@
 import { Psychologist } from '@/types/psychologist';
-import { databaseApi } from './firebase';
+import { authApi } from './firebase';
 
 export const getPsychologists = async (): Promise<Psychologist[]> => {
-  const res = await databaseApi.get('.json');
-  const psychologists: Psychologist[] = [];
-  for (const id in res.data) {
-    psychologists.push({
-      ...res.data[id],
-      id,
-    });
-  }
+  const { data } = await authApi.get('/psychologists');
 
-  return psychologists;
+  return data;
 };
