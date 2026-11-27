@@ -77,3 +77,101 @@ export default function Filters() {
     </div>
   );
 }
+
+// 'use client';
+
+// import { useEffect, useState } from 'react';
+// import { getPsychologists, Psychologist } from '@/src/lib/firebase/db';
+
+// export default function PsychologistsPage() {
+//   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
+//   const [searchQuery, setSearchQuery] = useState('');
+//   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
+
+//   // Fetch from Realtime Database on load
+//   useEffect(() => {
+//     getPsychologists()
+//       .then(setPsychologists)
+//       .catch(err => console.error('Error fetching data:', err));
+//   }, []);
+
+//   // 1. Filter psychologists by name
+//   const filteredPsychologists = psychologists.filter(psych =>
+//     psych.name.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   // 2. Sort the filtered psychologists list by price
+//   const finalPsychologists = [...filteredPsychologists].sort((a, b) => {
+//     if (sortOrder === 'asc') return a.price - b.price;
+//     if (sortOrder === 'desc') return b.price - a.price;
+//     return 0; // Maintain original database order
+//   });
+
+//   return (
+//     <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
+//       <h1>Psychologists Directory</h1>
+
+//       {/* Filter and Sort UI Controls */}
+//       <div style={{ display: 'flex', gap: '15px', marginBottom: '30px' }}>
+//         <input
+//           type="text"
+//           placeholder="Search by name..."
+//           value={searchQuery}
+//           onChange={e => setSearchQuery(e.target.value)}
+//           style={{
+//             padding: '10px',
+//             flex: 1,
+//             borderRadius: '5px',
+//             border: '1px solid #ccc',
+//           }}
+//         />
+
+//         <select
+//           value={sortOrder}
+//           onChange={e => setSortOrder(e.target.value as 'asc' | 'desc' | '')}
+//           style={{
+//             padding: '10px',
+//             borderRadius: '5px',
+//             border: '1px solid #ccc',
+//           }}
+//         >
+//           <option value="">Default Order</option>
+//           <option value="asc">Price: Low to High</option>
+//           <option value="desc">Price: High to Low</option>
+//         </select>
+//       </div>
+
+//       {/* Card Grid */}
+//       <div
+//         style={{
+//           display: 'grid',
+//           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+//           gap: '20px',
+//         }}
+//       >
+//         {finalPsychologists.map(psych => (
+//           <div
+//             key={psych.id}
+//             style={{
+//               border: '1px solid #eaeaea',
+//               padding: '20px',
+//               borderRadius: '8px',
+//               boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+//             }}
+//           >
+//             <h3>{psych.name}</h3>
+//             <p>
+//               <strong>Specialization:</strong> {psych.specialization}
+//             </p>
+//             <p>
+//               <strong>Price:</strong> {psych.price} €/hr
+//             </p>
+//           </div>
+//         ))}
+//         {finalPsychologists.length === 0 && (
+//           <p>No psychologists found matching your criteria.</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }

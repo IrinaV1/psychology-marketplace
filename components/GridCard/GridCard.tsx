@@ -4,19 +4,22 @@ import Card from '../Card/Card';
 import css from './GridCard.module.css';
 
 import { useEffect, useState } from 'react';
-import { getPsychologists } from '@/lib/firebase/clientApi';
+import { getPsychologists } from '@/lib/firebase/database';
 
 export default function GridCard() {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   useEffect(() => {
     const fetchPsychologists = async () => {
-      const data = await getPsychologists();
-      setPsychologists(data);
+      try {
+        const data = await getPsychologists();
+        setPsychologists(data);
+      } catch (error) {
+        console.error('Failed to fetch psychologists:', error);
+      }
     };
 
     fetchPsychologists();
   }, []);
-  console.log(psychologists);
 
   return (
     <div className={css.containerCards}>

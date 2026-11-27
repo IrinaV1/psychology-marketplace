@@ -1,6 +1,8 @@
 'use client';
-import { getCurrentUser } from '@/lib/firebase/auth';
+
+import { auth } from '@/lib/firebase/firebase';
 import { useAuthStore } from '@/lib/store/authStore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { ReactNode, useEffect } from 'react';
 
 interface AuthProviderProps {
@@ -13,19 +15,20 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   const clearUser = useAuthStore(state => state.clearUser);
 
   useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const user = await getCurrentUser();
-        if (user) {
-          setUser(user);
-        } else {
-          clearUser();
-        }
-      } finally {
-        setIsLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        setUser({
+          localId: user.uid,
+          email: user.email || '',
+          displayName: user.displayName || '',
+        });
+      } else {
+        clearUser();
       }
-    };
-    checkSession();
+
+      setIsLoading(false);
+    });
+    return () => unsubscribe();
   }, [setUser, clearUser, setIsLoading]);
 
   return <>{children}</>;

@@ -1,5 +1,11 @@
 import { User } from '@/types/user';
-import { authApi } from './firebase';
+import { auth } from './firebase';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from 'firebase/auth';
 
 // Registration
 export const registerUser = async (
@@ -7,13 +13,17 @@ export const registerUser = async (
   email: string,
   password: string
 ): Promise<User> => {
-  const { data } = await authApi.post('/auth/register', {
-    name,
-    email,
-    password,
+  const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
+  await updateProfile(user, {
+    displayName: name,
   });
 
-  return data.user;
+  return {
+    localId: user.uid,
+    email: user.email || '',
+    displayName: user.displayName || name,
+  };
 };
 
 // Login
@@ -21,25 +31,30 @@ export const loginUser = async (
   email: string,
   password: string
 ): Promise<User> => {
-  const { data } = await authApi.post(`/auth/login`, {
-    email,
-    password,
-  });
+  const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-  return data.user;
+  return {
+    localId: user.uid,
+    email: user.email || '',
+    displayName: user.displayName || '',
+  };
 };
 
 // Logout
 export const logoutUser = async (): Promise<void> => {
-  await authApi.post('/auth/logout');
+  await signOut(auth);
 };
 
 // User
 export const getCurrentUser = async (): Promise<User | null> => {
-  try {
-    const { data } = await authApi.get('/auth/session');
-    return data.user;
-  } catch {
+  const user = auth.currentUser;
+  if (!user) {
     return null;
   }
+
+  return {
+    localId: user.uid,
+    email: user.email || '',
+    displayName: user.displayName || '',
+  };
 };
